@@ -1,0 +1,18 @@
+{
+  "name": "getarobot-website-agent",
+  "version": "1.0.0",
+  "description": "Webhook server + SSE relay for Retell.ai voice agent controlling website visitor browser",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["retell", "voice-agent", "sse", "webhook", "fastify"],
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^5.3.3",
+    "@fastify/cors": "^11.0.1",
+    "uuid": "^11.1.0"
+  }
+}

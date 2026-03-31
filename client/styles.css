@@ -1,0 +1,257 @@
+/* ── GAR Widget ─────────────────────────────────────────────────── */
+
+.gar-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.gar-widget-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.gar-widget-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.gar-widget-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* States */
+.gar-state-connecting .gar-widget-icon {
+  animation: gar-pulse 1.2s ease-in-out infinite;
+}
+
+.gar-state-active {
+  background: #16a34a;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5);
+  animation: gar-ring 1.5s ease-out infinite;
+}
+
+.gar-state-error {
+  background: #dc2626;
+}
+
+@keyframes gar-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes gar-ring {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+/* ── Highlight ──────────────────────────────────────────────────── */
+
+.gar-highlight {
+  background: rgba(250, 204, 21, 0.35);
+  border-radius: 2px;
+  padding: 1px 2px;
+  animation: gar-glow 1.5s ease-in-out 2;
+}
+
+@keyframes gar-glow {
+  0%, 100% { background: rgba(250, 204, 21, 0.35); }
+  50% { background: rgba(250, 204, 21, 0.6); }
+}
+
+/* ── Popup Overlay ──────────────────────────────────────────────── */
+
+.gar-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gar-fade-in 0.2s ease;
+}
+
+@keyframes gar-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gar-popup-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: gar-slide-up 0.25s ease;
+}
+
+@keyframes gar-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gar-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+
+.gar-popup-close:hover {
+  color: #111;
+}
+
+.gar-popup-content h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+.gar-popup-content p {
+  margin: 0 0 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.gar-popup-content ul {
+  padding-left: 20px;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Popup form */
+.gar-popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gar-popup-form input {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.gar-popup-form input:focus {
+  border-color: #111;
+}
+
+.gar-popup-form button {
+  padding: 12px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.gar-popup-form button:hover {
+  background: #333;
+}
+
+/* Comparison table */
+.gar-comparison {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.gar-comparison th,
+.gar-comparison td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.gar-comparison th {
+  font-weight: 600;
+  color: #111;
+}
+
+/* ── Dark Mode ──────────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  .gar-popup-card {
+    background: #1a1a1a;
+  }
+
+  .gar-popup-close {
+    color: #999;
+  }
+
+  .gar-popup-close:hover {
+    color: #fff;
+  }
+
+  .gar-popup-content h3 {
+    color: #f5f5f5;
+  }
+
+  .gar-popup-content p {
+    color: #aaa;
+  }
+
+  .gar-popup-content ul {
+    color: #ccc;
+  }
+
+  .gar-popup-form input {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #eee;
+  }
+
+  .gar-popup-form input:focus {
+    border-color: #888;
+  }
+
+  .gar-popup-form button {
+    background: #fff;
+    color: #111;
+  }
+
+  .gar-comparison th,
+  .gar-comparison td {
+    border-color: #333;
+    color: #ccc;
+  }
+
+  .gar-comparison th {
+    color: #f5f5f5;
+  }
+}
