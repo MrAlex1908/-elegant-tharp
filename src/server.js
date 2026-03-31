@@ -16,9 +16,6 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000')
 const app = Fastify({
   logger: {
     level: process.env.LOG_LEVEL || 'info',
-    ...(process.env.NODE_ENV !== 'production' && {
-      transport: { target: 'pino-pretty', options: { colorize: true } },
-    }),
   },
 });
 
