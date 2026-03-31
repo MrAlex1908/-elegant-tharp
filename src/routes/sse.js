@@ -1,6 +1,9 @@
 import { getSession, setSseResponse, removeSession } from '../services/sessionStore.js';
 
 const HEARTBEAT_INTERVAL = 30_000; // 30 seconds
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000')
+  .split(',')
+  .map((o) => o.trim());
 
 /**
  * SSE streaming route.
@@ -18,12 +21,18 @@ export default async function sseRoutes(fastify) {
       return reply.code(404).send({ error: 'Session not found' });
     }
 
-    // Set SSE headers
+    // Determine CORS origin — reply.raw bypasses @fastify/cors, so set manually
+    const origin = request.headers.origin;
+    const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+
+    // Set SSE headers (including CORS)
     reply.raw.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
       'Connection': 'keep-alive',
       'X-Accel-Buffering': 'no',
+      'Access-Control-Allow-Origin': allowedOrigin,
+      'Access-Control-Allow-Credentials': 'true',
     });
 
     // Store the raw response for pushing commands later
