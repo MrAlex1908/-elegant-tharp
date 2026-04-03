@@ -14,15 +14,25 @@
   const HIGHLIGHT_DURATION = 5000; // auto-remove highlights after 5s
   const HEADER_OFFSET = 80; // offset for fixed Tilda header
 
-  // Section ID → CSS selector mapping (update with real Tilda rec IDs)
+  // Section ID → CSS selector mapping (real Tilda rec IDs)
   const SECTION_MAP = {
-    home: '#rec_hero',
-    today: '#today',
-    tomorrow: '#tomorrow',
-    after: '#after',
-    scenarios: '#scenarios',
-    faq: '#faq',
-    footer: 'footer',
+    home: '#rec2113260303',             // Hero — "Your customers get answers instantly…"
+    hero: '#rec2113260303',
+    get_a_robot: '#rec1551125221',      // "Get a robot — One AI Robot. Every call and message."
+    problem: '#rec1551125261',          // "The Problem With Common AI"
+    stats: '#rec2113262533',            // Call loss statistics
+    solution: '#rec1565293461',         // "Automatic Scheduling & Smart Dispatching"
+    features_today: '#rec1551125241',   // Current features (CRM, returning customers)
+    features_tomorrow: '#rec1565311381',// "AI That Speaks in Your Voice", voice cloning
+    features_future: '#rec1567566371',  // Mobile app, unified communication
+    innovate: '#rec1551125381',         // "Innovate Today"
+    scenarios: '#rec1551125351',        // Call scenarios — "statistics based on 100,000 conversations"
+    call_samples: '#rec1551125341',     // "After-Hours Call", call recording samples
+    faq: '#rec1551125371',             // "How does the integration work…"
+    try_voice: '#rec1573999981',       // "Try our voice AI"
+    book_meeting: '#rec1634057011',    // "Book a meeting to setup our AI"
+    navigate: '#rec2113264443',        // "Let our agent navigate you"
+    footer: '#rec1579560031',          // Footer — getarobot.ai
   };
 
   let evtSource = null;
